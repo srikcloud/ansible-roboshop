@@ -8,7 +8,7 @@
   - name: enable nodejs:20
     ansible.builtin.command: dnf module enable nodejs:20 -y
 
-  - name: install nodejs
+  - name: Install nodejs
     ansible.builtin.dnf:
       name: nodejs
       state: present
@@ -51,3 +51,9 @@
   - name: systemctl deamon reload
     ansible.builtin.systemd_service:
       daemon_reload: true
+  
+  - name: start and enable user
+    ansible.builtin.service:
+      name: user
+      state: started
+      enabled: yes
